@@ -2,6 +2,7 @@ package com.mgh.cms.mapper;
 
 import com.mgh.cms.entity.CrmBanner;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author mgh
  * @since 2022-02-23
  */
-public interface CrmBannerMapper extends BaseMapper<CrmBanner> {
+@Repository("bannerMapper")
+public interface BannerMapper extends BaseMapper<CrmBanner> {
 
 }
