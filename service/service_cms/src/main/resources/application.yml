@@ -1,0 +1,38 @@
+#端口号
+server:
+  port: 8083
+  servlet:
+    encoding: #中文乱码
+      charset: UTF-8
+      force: true
+      enabled: true
+
+#服务名
+spring:
+  application:
+    name: service-cms
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://124.222.55.226:3306/edu_online?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari: #添加池并发数量避免链接失败
+      maximum-pool-size: 500
+      connection-timeout: 1540000
+      max-lifetime: 1500000
+  jackson: #日期解析器
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    nacos:  #nacos配置
+      server-addr: 127.0.0.1:8848  #服务地址
+#mybatis-plus 日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
