@@ -9,10 +9,12 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author MGH
@@ -27,10 +29,10 @@ public class BannerFrontController {
     @Autowired
     private BannerService bannerService;
 
-    @RequestMapping
-    @ApiOperation("获取所有排序最小的前4条banner")
-    public MyResult getAllBanner(){
-        List<CrmBanner> banners = bannerService.getAllBanner();
+    @GetMapping
+    @ApiOperation("获取所有排序最小的前6条banner")
+    public MyResult getSixBanner(){
+        List<Map<String, Object>> banners = bannerService.getSixBanner();
         if (!banners.isEmpty()){
             return MyResult.ok().data("items",banners);
         }

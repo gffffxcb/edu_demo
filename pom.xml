@@ -29,6 +29,7 @@
         <commons-io.version>2.6</commons-io.version>
         <httpclient.version>4.5.13</httpclient.version>
         <jwt.version>0.9.1</jwt.version>
+        <java-jwt.version>3.8.1</java-jwt.version>
         <aliyun-java-sdk-core.version>4.5.1</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-vod.version>2.15.11</aliyun-java-sdk-vod.version>
         <aliyun-java-sdk-kms.version>2.10.1</aliyun-java-sdk-kms.version>
@@ -152,6 +153,11 @@
                 <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
             </dependency>
+          <!--  <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java-jwt.version}</version>
+            </dependency>-->
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>

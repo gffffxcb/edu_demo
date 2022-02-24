@@ -15,6 +15,7 @@
         <module>service_vod</module>
         <module>service_oss</module>
         <module>service_cms</module>
+        <module>service_msm</module>
     </modules>
     <dependencies>
         <!--nacos service discovery client依赖 服务注册中心-->
@@ -202,6 +203,15 @@
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-sdk-vod-upload</artifactId>
+        </dependency>
+        <!--mail-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency> <!--邮件模板-->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
     </dependencies>
     <properties>

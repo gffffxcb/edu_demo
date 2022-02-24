@@ -4,6 +4,7 @@ import com.mgh.cms.entity.CrmBanner;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -14,5 +15,5 @@ import java.util.List;
  * @since 2022-02-23
  */
 public interface BannerService extends IService<CrmBanner> {
-    List<CrmBanner> getAllBanner();
+    List<Map<String, Object>> getSixBanner();
 }
