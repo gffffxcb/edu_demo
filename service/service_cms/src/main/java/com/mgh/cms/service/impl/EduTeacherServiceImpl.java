@@ -1,7 +1,9 @@
 package com.mgh.cms.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mgh.cms.entity.EduTeacher;
+import com.mgh.cms.entity.vo.TeacherInfoVo;
 import com.mgh.cms.mapper.EduTeacherMapper;
 import com.mgh.cms.service.EduTeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -35,5 +37,21 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         queryWrapper.last("limit 4");
         List<Map<String, Object>> teachers = teacherMapper.selectMaps(queryWrapper);
         return teachers;
+    }
+
+    @Override
+    public Page<EduTeacher> getTeacherPage(Integer nowPage, Integer pageSize) {
+        Page<EduTeacher> page = new Page<>(nowPage,pageSize);
+        QueryWrapper<EduTeacher> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("id", "name", "intro", "career", "avatar");
+        queryWrapper.orderByAsc("sort");
+        Page<EduTeacher> teacherPage = teacherMapper.selectPage(page, queryWrapper);
+        return teacherPage;
+    }
+
+    @Override
+    public TeacherInfoVo getTeacherInfoById(String teacherId) {
+        TeacherInfoVo teacherInfoById= teacherMapper.getTeacherInfoById(teacherId);
+        return teacherInfoById;
     }
 }

@@ -4,6 +4,7 @@ package com.mgh.edu.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mgh.commanUtils.MyResult;
+import com.mgh.commanUtils.to.OrderInfoCourseTo;
 import com.mgh.edu.entity.vo.CourseInfoVo;
 import com.mgh.edu.entity.vo.CourseListVo;
 import com.mgh.edu.entity.vo.CoursePublicInfoVo;
@@ -95,6 +96,12 @@ public class CourseController {
             return MyResult.ok().message("删除成功");
         }
         return MyResult.error().message("删除失败");
+    }
+    @GetMapping("/orderInfo/{id}")
+    @ApiOperation("订单中课程信息")
+    public OrderInfoCourseTo getCourseInfoToOrder(@PathVariable( value = "id") String id) {
+        OrderInfoCourseTo result = courseService.getOrderInfoByCourse(id);
+        return result;
     }
 
 

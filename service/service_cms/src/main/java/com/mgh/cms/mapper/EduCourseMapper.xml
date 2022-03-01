@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgh.cms.mapper.EduCourseMapper">
+    <resultMap id="courseInfoMapping" type="com.mgh.cms.entity.vo.CourseInfoVo">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="career" column="career" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="LONGVARCHAR"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="buyCount" column="buy_count" jdbcType="BIGINT"/>
+        <result property="viewCount" column="view_count" jdbcType="BIGINT"/>
+        <result property="teacherId" column="teacher_Id" jdbcType="VARCHAR"/>
+        <result property="lessonNum" column="lesson_num" jdbcType="INTEGER"/>
+        <result property="teacherName" column="name" jdbcType="VARCHAR"/>
+        <result property="cover" column="cover" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getCourseInfoById" resultMap="courseInfoMapping" parameterType="string">
+        select c.id    id,
+               c.title title,
+               price,
+               lesson_num,
+               cover,
+               buy_count,
+               view_count,
+               d.description,
+               teacher_id,
+               t.name,
+               t.career,
+               t.avatar
+        FROM edu_course c
+                 left join edu_teacher t on c.teacher_id = t.id
+                 left join edu_course_description d on c.id = d.id
+        where c.id = #{courseId};
+    </select>
+    <update id="addViewCount" parameterType="string">
+        UPDATE `edu_online`.`edu_course`
+        SET `view_count` = view_count + 1
+        WHERE `id` = #{courseId};
+    </update>
+
+</mapper>

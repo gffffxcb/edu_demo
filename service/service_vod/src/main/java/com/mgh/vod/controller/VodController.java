@@ -1,6 +1,7 @@
 package com.mgh.vod.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.fastjson.JSONObject;
 import com.mgh.commanUtils.MyResult;
 import com.mgh.vod.service.VodService;
 import io.swagger.annotations.Api;
@@ -39,10 +40,10 @@ public class VodController {
         return MyResult.error().message("上传失败");
     }
 
-    @GetMapping //获取视频播放地址以及播放凭证
-    public MyResult getAliVideoAddressAndPlayAuth() {
-
-        return MyResult.ok();
+    @GetMapping("/getPlayAuth/{videoId}") //获取视频播放地址以及播放凭证
+    public MyResult getAliVideoPlayAuth(@PathVariable(value = "videoId")String videoId) {
+       Map<String,String> videoMap= vodService.getAliVideoPlayAuth(videoId);
+        return MyResult.ok().data("items", videoMap);
     }
 
     @DeleteMapping("/{videoId}") //删除云端视频

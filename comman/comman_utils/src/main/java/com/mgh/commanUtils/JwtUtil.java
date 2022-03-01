@@ -20,9 +20,9 @@ import java.util.*;
 public class JwtUtil {
 
     /**
-    * 设置token过期时间
+    * 设置token过期时间 30分钟
     */
-    public static final long EXPIRE = 1000 * 60 * 60 * 24;
+    public static final long EXPIRE = 1000 * 60 * 60 * 6;
     /**
      * 设置私钥
      */
@@ -31,7 +31,7 @@ public class JwtUtil {
     /**
      * 根据id生成token
      */
-    public static String getJwtToken(String id) {
+    public static String getJwtToken(String id,String nickname) {
         String JwtToken = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
@@ -39,6 +39,7 @@ public class JwtUtil {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
                 .claim("id", id)
+                .claim("nickname", nickname)
                 .signWith(SignatureAlgorithm.HS256, APP_SECRET)
                 .compact();
         return JwtToken;
@@ -80,10 +81,18 @@ public class JwtUtil {
      *
      * @return
      */
-    public static String getIdByJwtToken(String jwtToken) {
-        if (StringUtils.isEmpty(jwtToken)) return "";
-        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
-        Claims claims = claimsJws.getBody();
-        return (String) claims.get("id");
+    public static HashMap<String,String> getIdByJwtToken(String jwtToken) {
+        if (StringUtils.isEmpty(jwtToken)) return null;
+        try{
+            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
+            Claims claims = claimsJws.getBody();
+            HashMap<String, String> map = new HashMap<>();
+            map.put("id",(String) claims.get("id"));
+            map.put("nickname",(String) claims.get("nickname"));
+            return map;
+        }catch (Exception e){
+            throw new RuntimeException("token 已过期，请重新获取");
+        }
     }
+
 }

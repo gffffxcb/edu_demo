@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 /**
  * @author MGH
@@ -35,9 +36,10 @@ public class JwtInterceptor implements HandlerInterceptor {
                 if (token == null) {
                     throw new RuntimeException("无token，请重新登录");
                 }
-                // 获取 token 中的 Id
-                String userId = JwtUtil.getIdByJwtToken(token);
-                System.out.println("用户id:" + userId);
+                // 获取 token 中的 信息
+                HashMap<String, String> tokenInfo = JwtUtil.getIdByJwtToken(token);
+                System.out.println("用户id:" + tokenInfo.get("id"));
+                System.out.println("用户nickname:" + tokenInfo.get("nickname"));
                 // 验证 token
                 JwtUtil.checkToken(token);
             }

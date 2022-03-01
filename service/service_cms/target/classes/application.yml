@@ -14,14 +14,14 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://124.222.55.226:3306/edu_online?serverTimezone=GMT%2B8
+    url: jdbc:mysql://rm-bp1lcm693d2fe6730po.mysql.rds.aliyuncs.com/edu_online?serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: root
+    password: XHY123456m
     hikari: #添加池并发数量避免链接失败
-      maximum-pool-size: 500
-      connection-timeout: 1540000
-      max-lifetime: 1500000
+      maximum-pool-size: 50
+      connection-timeout: 154000
+      max-lifetime: 150000
   jackson: #日期解析器
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -31,8 +31,20 @@ spring:
   cloud:
     nacos:  #nacos配置
       server-addr: 127.0.0.1:8848  #服务地址
+  redis:
+    host: 124.222.55.226
+    port: 6333
+    database: 0
+    timeout: 8000
+    password: root123
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1 #最大阻塞等待时间(负数表示没限制)
+        max-idle: 5
+        min-idle: 1
+
 #mybatis-plus 日志
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-

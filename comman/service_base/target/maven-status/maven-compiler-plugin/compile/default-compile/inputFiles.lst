@@ -1,0 +1,6 @@
+/Users/a1989/Java_work/edu_demo/comman/service_base/src/main/java/com/mgh/serviceBase/interpector/JwtInterceptor.java
+/Users/a1989/Java_work/edu_demo/comman/service_base/src/main/java/com/mgh/serviceBase/config/SwaggerConfig.java
+/Users/a1989/Java_work/edu_demo/comman/service_base/src/main/java/com/mgh/serviceBase/exception/GlobalExceptionHandler.java
+/Users/a1989/Java_work/edu_demo/comman/service_base/src/main/java/com/mgh/serviceBase/handler/MyMetaObjectHandler.java
+/Users/a1989/Java_work/edu_demo/comman/service_base/src/main/java/com/mgh/serviceBase/config/RedisConfig.java
+/Users/a1989/Java_work/edu_demo/comman/service_base/src/main/java/com/mgh/serviceBase/exception/MyException.java

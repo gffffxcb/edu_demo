@@ -16,6 +16,9 @@
         <module>service_oss</module>
         <module>service_cms</module>
         <module>service_msm</module>
+        <module>service_ucenter</module>
+        <module>service_order</module>
+        <module>service_sta</module>
     </modules>
     <dependencies>
         <!--nacos service discovery client依赖 服务注册中心-->

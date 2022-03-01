@@ -16,6 +16,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         //自动注入,实体类中属性名不是数据库字段
         this.setFieldValByName("isDeleted", 0, metaObject);
+        this.setFieldValByName("isDisabled", 0, metaObject);
         this.setFieldValByName("gmtCreate", new Date(), metaObject);
         this.setFieldValByName("gmtModified", new Date(), metaObject);
 

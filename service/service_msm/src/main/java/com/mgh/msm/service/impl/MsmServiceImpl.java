@@ -5,7 +5,6 @@ import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.google.gson.Gson;
@@ -21,7 +20,7 @@ import java.util.HashMap;
  * @author MGH
  * @create 2022-0224 10:31 上午
  */
-@Service("msmService")
+@Service("msmServiceImpl")
 @Slf4j
 public class MsmServiceImpl implements MsmService {
     @Override
@@ -43,8 +42,6 @@ public class MsmServiceImpl implements MsmService {
             boolean result = response.getHttpResponse().isSuccess();
             log.info(new Gson().toJson(response));
             return result;
-        } catch (ServerException e) {
-            e.printStackTrace();
         } catch (ClientException e) {
             log.info("ErrCode:" + e.getErrCode());
             log.info("ErrMsg:" + e.getErrMsg());

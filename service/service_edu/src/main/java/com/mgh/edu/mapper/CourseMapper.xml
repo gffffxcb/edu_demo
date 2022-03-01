@@ -12,6 +12,13 @@
         <result property="cover" column="cover" jdbcType="VARCHAR"/>
         <result property="description" column="description" jdbcType="LONGVARCHAR"/>
     </resultMap>
+    <resultMap id="orderInfoMapper" type="com.mgh.commanUtils.to.OrderInfoCourseTo">
+        <id property="courseId" column="course_id" jdbcType="CHAR"/>
+        <result property="teacherName" column="teacher_name" jdbcType="VARCHAR"/>
+        <result property="courseTitle" column="course_title" jdbcType="VARCHAR"/>
+        <result property="totalFee" column="total_fee" jdbcType="DECIMAL"/>
+        <result property="courseCover" column="course_cover" jdbcType="VARCHAR"/>
+    </resultMap>
     <select id="getCourseInfo" resultMap="courseInfoVoMapper" parameterType="string">
         SELECT edu_course.id,
                teacher_id,
@@ -80,6 +87,11 @@
                 AND c.subject_id = #{query.subjectId}
             </if>
         </where>
+    </select>
+    <select id="getOrderInfoByCourse" resultMap="orderInfoMapper" parameterType="string">
+        select c.id course_id, t.name teacher_name, c.title course_title, c.price total_fee, c.cover course_cover
+        from edu_course c
+                 join edu_teacher t on c.teacher_id = t.id and c.id = #{id};
     </select>
 
 </mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgh.ucenter.mapper.MemberMapper">
+    <resultMap id="orderInfoMemberMapping" type="com.mgh.commanUtils.to.OrderInfoMemberTo">
+        <id property="memberId" column="id" jdbcType="CHAR"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getOrderInfoByMember" resultMap="orderInfoMemberMapping" parameterType="string">
+        SELECT id, mobile, nickname
+        from ucenter_member
+        where id = #{id};
+    </select>
+    <select id="getRegisterCount" resultType="java.lang.Integer">
+        select count(id) from ucenter_member where DATE(gmt_create) = #{day};
+    </select>
+</mapper>

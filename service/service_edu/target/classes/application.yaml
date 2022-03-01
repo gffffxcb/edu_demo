@@ -14,14 +14,18 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://124.222.55.226:3306/edu_online?serverTimezone=GMT%2B8
+    url: jdbc:mysql://rm-bp1lcm693d2fe6730po.mysql.rds.aliyuncs.com/edu_online?serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: root
+    password: XHY123456m
     hikari: #添加池并发数量避免链接失败
-      maximum-pool-size: 500
-      connection-timeout: 1540000
-      max-lifetime: 1500000
+      maximum-pool-size: 10
+      connection-timeout: 60000
+      max-lifetime: 60000
+      validation-timeout: 3000
+      idle-timeout: 60000
+      minimum-idle: 10
+      login-timeout: 5
   jackson: #日期解析器
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -39,8 +43,8 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#扫描mapper文件
-mapper-locations: classpath*:com/mgh/**/mapper/xml/*.xml
+  mapper-locations: classpath:com/mgh/edu/mapper/*.xml #扫描mapper文件
+
 #日志级别,控制日志输出到控制台
 #logging:
 #  level:

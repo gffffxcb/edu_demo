@@ -2,6 +2,7 @@ package com.mgh.cms.mapper;
 
 import com.mgh.cms.entity.EduTeacher;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mgh.cms.entity.vo.TeacherInfoVo;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository("eduTeacherMapper")
 public interface EduTeacherMapper extends BaseMapper<EduTeacher> {
 
+    TeacherInfoVo getTeacherInfoById(String teacherId);
 }

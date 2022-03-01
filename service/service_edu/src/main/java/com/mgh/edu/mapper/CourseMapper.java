@@ -2,6 +2,7 @@ package com.mgh.edu.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mgh.commanUtils.to.OrderInfoCourseTo;
 import com.mgh.edu.entity.Course;
 import com.mgh.edu.entity.vo.CourseInfoVo;
 import com.mgh.edu.entity.vo.CourseListVo;
@@ -28,4 +29,6 @@ public interface CourseMapper extends BaseMapper<Course> {
     Integer updateStatusNormal(String id);
 
     Page<CourseListVo> getPageQuery(Page<CourseListVo> page, @Param("query") CourseQuery query);
+
+    OrderInfoCourseTo getOrderInfoByCourse(String id);
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgh.cms.mapper.EduTeacherMapper">
+    <resultMap id="teacherInfoMapping" type="com.mgh.cms.entity.vo.TeacherInfoVo">
+        <id property="id" column="id" jdbcType="CHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="intro" column="intro" jdbcType="VARCHAR"/>
+        <result property="career" column="career" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="level" column="level" jdbcType="INTEGER"/>
+        <collection property="teacherOfCourseVoList" javaType="java.util.ArrayList"
+                    ofType="com.mgh.cms.entity.vo.TeacherOfCourseVo">
+            <id property="id" column="course_id" jdbcType="CHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="cover" column="cover" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+    <select id="getTeacherInfoById" resultMap="teacherInfoMapping" parameterType="string">
+        select t.id,
+               name,
+               intro,
+               career,
+               avatar,
+               level,
+               c.id course_id,
+               title,
+               cover
+        from edu_teacher t
+                 LEFT JOIN edu_course c on t.id = c.teacher_id
+        where t.id = #{teacherId};
+    </select>
+</mapper>

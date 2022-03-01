@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgh.cms.mapper.EduChapterMapper">
+    <resultMap id="chapterVoMapper" type="com.mgh.cms.entity.vo.ChapterAndVideoVo">
+        <id property="id" column="chapter_id" jdbcType="CHAR"/>
+        <result property="title" column="chapter_title" jdbcType="VARCHAR"/>
+        <result property="sort" column="chapter_sort" jdbcType="INTEGER"/>
+        <collection property="children" javaType="java.util.ArrayList" ofType="com.mgh.cms.entity.vo.VideoVo">
+            <id property="id" column="video_id" jdbcType="CHAR"/>
+            <result property="title" column="video_title" jdbcType="VARCHAR"/>
+            <result property="sort" column="video_sort" jdbcType="INTEGER"/>
+            <result property="free" column="is_free" jdbcType="TINYINT"/>
+        </collection>
+    </resultMap>
+    <select id="getAllByCourseId" resultMap="chapterVoMapper" parameterType="string">
+        SELECT v.id video_id, v.title video_title,v.sort video_sort, is_free, c.id chapter_id, c.title chapter_title,c.sort chapter_sort
+        from edu_video v
+                 right JOIN(select id, title,sort FROM edu_chapter WHERE course_id = #{id} ) c
+                           ON v.course_id = #{id} and v.chapter_id = c.id order by c.sort, v.sort asc;
+    </select>
+</mapper>

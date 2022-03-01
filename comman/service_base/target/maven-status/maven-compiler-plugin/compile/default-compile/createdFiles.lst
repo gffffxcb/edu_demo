@@ -1,0 +1,6 @@
+com/mgh/serviceBase/config/SwaggerConfig.class
+com/mgh/serviceBase/handler/MyMetaObjectHandler.class
+com/mgh/serviceBase/exception/GlobalExceptionHandler.class
+com/mgh/serviceBase/config/RedisConfig.class
+com/mgh/serviceBase/interpector/JwtInterceptor.class
+com/mgh/serviceBase/exception/MyException.class

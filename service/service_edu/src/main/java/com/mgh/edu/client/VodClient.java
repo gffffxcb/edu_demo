@@ -14,7 +14,7 @@ import java.util.List;
  * @create 2022-0222 11:36 上午
  */
 @FeignClient(name = "service-vod",fallback = VodFeignClientFallback.class) //注册中心的服务名称
-@Component
+@Component("vodClient")
 public interface VodClient {
     @DeleteMapping("/eduVod/{videoId}") //添加删除云端视频接口
     public MyResult deleteVideoById(@PathVariable(name = "videoId") String videoId);

@@ -3,6 +3,7 @@ package com.mgh.edu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mgh.commanUtils.to.OrderInfoCourseTo;
 import com.mgh.edu.client.VodClient;
 import com.mgh.edu.entity.Chapter;
 import com.mgh.edu.entity.Course;
@@ -22,8 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * <p>
@@ -122,5 +121,11 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
             return true;
         }
         return false;
+    }
+
+    @Override
+    public OrderInfoCourseTo getOrderInfoByCourse(String id) {
+        OrderInfoCourseTo orderInfoByCourse = courseMapper.getOrderInfoByCourse(id);
+        return orderInfoByCourse;
     }
 }

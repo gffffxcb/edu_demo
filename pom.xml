@@ -5,6 +5,7 @@
     <modules>
         <module>service</module>
         <module>comman</module>
+        <module>infrastructure</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -27,6 +28,7 @@
         <jodatime.version>2.10.13</jodatime.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <commons-io.version>2.6</commons-io.version>
+        <commons-lang.version>2.6</commons-lang.version>
         <httpclient.version>4.5.13</httpclient.version>
         <jwt.version>0.9.1</jwt.version>
         <java-jwt.version>3.8.1</java-jwt.version>
@@ -135,6 +137,11 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
             </dependency>
             <!--httpclient-->
             <dependency>

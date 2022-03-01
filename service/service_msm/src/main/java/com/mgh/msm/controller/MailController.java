@@ -20,7 +20,7 @@ public class MailController {
     @Autowired
     private MailService mailService;
 
-    @PostMapping("/{e-mail}")
+    @GetMapping("/{e-mail}")
     @ApiOperation("6位验证码邮箱发送")
     public MyResult sendEmail(@PathVariable(value = "e-mail") String mail) {
        Boolean result= mailService.sendMail(mail);

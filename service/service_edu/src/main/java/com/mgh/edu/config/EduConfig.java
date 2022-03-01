@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @create 2022-0209 9:04 下午
  */
 @Configuration
-@MapperScan("com.mgh.**.mapper")
+@MapperScan("com.mgh.edu.mapper")
 public class EduConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {

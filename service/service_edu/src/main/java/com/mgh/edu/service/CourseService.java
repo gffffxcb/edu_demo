@@ -2,6 +2,7 @@ package com.mgh.edu.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mgh.commanUtils.to.OrderInfoCourseTo;
 import com.mgh.edu.entity.Course;
 import com.mgh.edu.entity.vo.CourseInfoVo;
 import com.mgh.edu.entity.vo.CourseListVo;
@@ -31,4 +32,6 @@ public interface CourseService extends IService<Course> {
     Page<CourseListVo> getCourseQuery(Integer nowPage, Integer pageSize, CourseQuery courseQuery);
 
     Boolean deleteCourseById(String id);
+
+    OrderInfoCourseTo getOrderInfoByCourse(String id);
 }

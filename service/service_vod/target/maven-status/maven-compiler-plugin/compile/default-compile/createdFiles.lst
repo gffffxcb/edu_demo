@@ -1,0 +1,6 @@
+com/mgh/vod/controller/VodController.class
+com/mgh/vod/service/VodService.class
+com/mgh/vod/VodApplication.class
+com/mgh/vod/utils/ConstantPropertiesUtils.class
+com/mgh/vod/service/impl/VodServiceImpl.class
+com/mgh/vod/utils/AliYunVodSDKUtils.class

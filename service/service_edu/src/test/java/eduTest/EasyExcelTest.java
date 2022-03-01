@@ -30,6 +30,6 @@ public class EasyExcelTest {
     public void demo02(){ //read
         String fileName="/Users/a1989/Desktop/test.xlsx";
         //doReadAll() 读取所有sheet
-        EasyExcel.read(fileName, DemoData.class, new EasyExcelListener()).sheet().doRead();
+//        EasyExcel.read(fileName, DemoData.class, new EasyExcelListener()).sheet().doRead();
     }
 }
